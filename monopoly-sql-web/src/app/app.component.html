@@ -1,0 +1,55 @@
+<div id="main-div">
+  <div id="player-add-div" >
+    <div id="player-add-header-div">
+      <div id="logo-div">
+        <img src="../assets/Monopoly.svg.png" alt="" srcset="">
+      </div>
+    </div>
+
+    <div id="player-add-list-div">
+      <div id="player-add-list-header-div">
+        <span>С возвращением!</span>
+      </div>
+      <div class="little-divider-div"></div>
+        <div class="player-name-div" id="player-name-div-1">
+          <input class="player-name-input" id="nick-input" type="text" placeholder="Введите ник">
+        </div>
+        <div class="player-name-div" id="player-name-div-2">
+          <input class="player-name-input" id="pass-input" type="text" placeholder="Введите пароль">
+        </div>      
+      <div id="start-game-button-div">
+        <button class="original-button" *ngIf="!isRegistration" (click)="loginToAccount()"><span>Войти!</span></button>
+        <button class="original-button" *ngIf="isRegistration" (click)="regNewAccount()"><span>Зарегистрироваться!</span></button>
+        <span *ngIf="!isRegistration" (click)="swapScreen()">Регистрация</span>
+        <span *ngIf="isRegistration" (click)="swapScreen()">Вход</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="roomCreationMenuIsActive" class="room-add-div">
+    <div class="player-name-div" id="player-name-div-1">
+      <input class="player-name-input" id="player-limit-input" type="text" placeholder="Максимальное кол-во игроков">
+    </div>
+    <div class="player-name-div" id="player-name-div-2">
+      <input class="player-name-input" id="time-input" type="text" placeholder="Время на ход (секунды)">
+    </div>
+    <button class="original-button" (click)="closeRoomCreationMenu()">Создать новую комнату!</button>
+  </div>
+
+  <div *ngIf="roomsListIsActive" class="rooms-list-div">
+    <div class="list-header"><span>Список комнат</span></div>
+    <ng-container *ngFor="let room of roomsList">
+      <div class="list-element">
+        <span class="header-span">ID комнаты:</span>
+        <span class="changable-span">{{room.room_id}}</span>
+        <span class="header-span">Ограничение кол-ва игроков:</span>
+        <span class="changable-span">{{room.player_number_limit}}</span>
+        <span class="header-span">Ограничение по времени на ход (секунды):</span>
+        <span class="changable-span">{{room.turn_time_limit}}</span>
+      </div>
+    </ng-container>
+  <button class="original-button" (click)="openRoomCreationMenu()">Создать новую комнату</button>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
