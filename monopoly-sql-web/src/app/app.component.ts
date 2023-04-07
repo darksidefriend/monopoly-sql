@@ -73,12 +73,7 @@ export class AppComponent {
 
     this.http.get(`https://sql.lavro.ru/call.php?pname=create_room&db=285312&p1=${this.token}&p2=${playerLimitValue}&p3=${timeLimitValue}`).subscribe((data : any) => {
       console.log('login data', data);
-      // let tempData : { room_id : Array<any>, player_number_limit : Array<any>, turn_time_limit : Array<any>} = data.RESULTS[2];
-      // this.token = data.RESULTS[0].token;
-      // this.onlineNickname = data.RESULTS[0].online;
-      // this.roomsList.push(tempData);
-      // this.roomsListIsActive = true;
-      // console.log(this.roomsList);
+      
     });
   }
 
